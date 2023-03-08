@@ -90,47 +90,65 @@
 	            <head>
 	              <meta charset="UTF-8">
 	              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	              <style> *{ margin: 0; box-sizing: border-box; } </style>
 	            </head>
-	            <title>`+ customTitle +` by `+ author +`</title>
-	            <body style="background-color: #bcd; color: #034;">
-	              <div style="width: 50%">
-	              <h1 style="text-align: center; 
-                             margin: 50px 0;
-	                         width: 100%; 
-	                         font-weight: normal; 
-                             font-family: Arial;">
-                    <span style="font-size: 48px;">`+ customTitle +` </span>
-                    <br>
-                    <span style="font-size:24px;font-style:italic">by `+ author +`</span>
-                  </h1>
-                  </div>
-	              <div style="width: 50%">
-	              <h1 style="text-align: center; 
-                             margin: 50px 0;
-	                         width: 100%; 
-	                         font-weight: normal; 
-	                         font-size: 48px; 
-                             font-family: Arial;">Solve Guide</h1>
-                  </div>`;
+	            <title> ` + customTitle.toUpperCase() + `by` + author + `</title>
+	            <body style="background-color: #01415d;">
+	            <header style="display: flex; 
+	                           justify-content: space-around; 
+	                           background-color: #01415d;
+	                           margin: 10px; 
+	                           padding: 30px; 
+	                           border: 5px solid #fff;">
+	                <p style="text-align: left; width: 50%; font-family: Arial;">
+                      <span style="font-size: 48px; 
+                                   font-weight: bold; 
+                                   color: #f5ea14">` + customTitle.toUpperCase() + 
+                     `</span>
+                      <br>
+                      <span style="font-size: 
+                                   24px; color: #fff; 
+                                   font-style: italic">by ` + author +
+                     `</span>
+                    </p>
+	                <p style="display: inherit; 
+	                          align-items: flex-end; 
+	                          flex-direction: row-reverse; 
+	                          width: 50%; 
+	                          color: #fff; 
+	                          font-weight: normal; 
+	                          font-size: 36px; 
+                            font-family: Arial;">
+                      &#9744 Solve guide
+                    </p>
+              </header><main>`;
 
 		    for (let key in htmlObj) { 
 		        html += 
 	            `<section style="display: flex; 
 	                             justify-content: space-around; 
 	                             align-items: center; 
-	                             margin: 50px 0;">
+	                             background-color: #acccdb; 
+	                             border: 5px solid #fff;
+	                             padding: 20px;
+	                             margin: 30px;">
 	               <div style="display: inherit; width: 50%; justify-content: space-around;">
-	                 <img style="width: 75%;" src="` + htmlObj[key].img + `"/>
+	                 <img style="width: 90%;" src=` + htmlObj[key].img + `"/>
 	               </div>
-	               <div style="display: inherit; justify-content: space-around; width: 50%;">
-	                 <pre style="width: 90%; font-family: Arial;font-size: 22px; white-space: pre-wrap;">` 
-	                   + htmlObj[key].desc +`
-	                 </pre>
+	               <div style="display: inherit; 
+	                           justify-content: space-around; 
+	                           width: 50%;">
+	                 <pre style="width: 90%; 
+	                             font-family: Arial;
+	                             font-size: 22px; 
+	                             white-space: pre-wrap;">`
+	                   + htmlObj[key].desc +
+	                `</pre>
 	               </div>
 	            </section>`;
 	        }
 
-	        html += `</body></html>`;
+	        html += `</main></body></html>`;
 		    console.log(html);
 		    return html;
 		}
