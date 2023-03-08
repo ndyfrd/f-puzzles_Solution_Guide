@@ -94,11 +94,12 @@
 	            <title>` + customTitle + ` by ` + author + `</title>
 	            <body style="background-color: #bcd; color: #034;">
 	              <h1 style="text-align: center; 
+                             margin: 50px 0;
 	                         width: 100%; 
 	                         font-weight: normal; 
-	                         font-size: 36px; 
-	                         margin: 50px 0;">` + customTitle +  `<span style="font-size:24px"> by </span>` + author + 
-	             `</h1>`;
+                             font-family: Arial;
+	                         "><span style="font-size: 48px;">` + customTitle +  ` </span><br><span style="font-size:24px">by</span><br><span style="font-size: 36px;">` + author + 
+	             `</span></h1>`;
 
 		    for (let key in htmlObj) { 
 		        html += 
@@ -110,7 +111,7 @@
 	                <img style="width: 75%;" src="` + htmlObj[key].img + `"/>
 	              </div>
 	              <div style="display: inherit; justify-content: space-around; width: 50%;">
-	                <pre style="width: 90%; font-size: 22px;">` + htmlObj[key].desc + `</pre>
+	                <pre style="width: 90%; font-family: Arial;font-size: 22px;white-space:pre-wrap;">` + htmlObj[key].desc + `</pre>
 	              </div>
 	            </section>`;
 	        }
