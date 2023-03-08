@@ -97,34 +97,30 @@
 	            <header style="display: flex; 
 	                           justify-content: space-around; 
 	                           background-color: #01415d;
-	                           margin: 20px 15px; 
+	                           margin: 30px 75px; 
 	                           border: 5px solid #fff;">
-	                <p style="text-align: left; 
-	                   width: 50%; 
-	                   font-family: Arial; 
-	                   padding: 10px 0 65px 10px;">
-                      <span style="font-size: 48px; 
-                                   font-weight: bold; 
-                                   color: #f5ea14">` + customTitle.toUpperCase() + 
-                     `</span>
-                      <br>
-                      <span style="font-size: 
-                                   24px; color: #fff; 
-                                   font-style: italic">by ` + author +
-                     `</span>
-                    </p>
-	                <p style="display: inherit; 
-	                          align-items: flex-end; 
-	                          flex-direction: row-reverse; 
-	                          padding: 0 15px 15px 0; 
-	                          width: 50%; 
-	                          color: #fff; 
-	                          font-weight: normal; 
-	                          font-size: 36px; 
-                            font-family: Arial;">
-                      &#9744 Solve guide
-                    </p>
-              </header><main>`;
+	              <p style="text-align: left; 
+	                 width: 50%; 
+	                 font-family: Arial; 
+	                 padding: 10px 0 65px 10px;">
+                    <span style="font-size: 60px; font-weight: bold; color: #f5ea14">` 
+                      + customTitle.toUpperCase() + 
+                   `</span>
+                    <br>
+                    <span style="font-size: 36px; color: #fff;>by ` + author + `</span>
+                  </p>
+	              <p style="display: inherit; 
+	                        align-items: flex-end; 
+	                        flex-direction: row-reverse; 
+	                        padding: 0 15px 15px 0; 
+	                        width: 50%; 
+	                        color: #fff; 
+	                        font-weight: normal; 
+	                        font-size: 36px; 
+                          font-family: Arial;">
+                    &#9744 Solve guide
+                  </p>
+                </header><main>`;
 
 		    for (let key in htmlObj) { 
 		        html += 
@@ -134,7 +130,7 @@
 	                             background-color: #acccdb; 
 	                             border: 5px solid #fff;
 	                             padding: 20px;
-	                             margin: 30px;">
+	                             margin: 30px 150px;">
 	               <div style="display: inherit; width: 50%; justify-content: space-around;">
 	                 <img style="width: 90%;" src="` + htmlObj[key].img + `"/>
 	               </div>
@@ -152,7 +148,6 @@
 	        }
 
 	        html += `</main></body></html>`;
-		    console.log(html);
 		    return html;
 		}
 
@@ -182,7 +177,6 @@
 	        }
 
 	        delete htmlObj[Object.keys(htmlObj).length]
-	        console.log(htmlObj);
 	        feedback = sel.value + ' Deleted.';
 	        steps--;
 	    }
@@ -205,7 +199,6 @@
 	        newSection(steps);
 	        noteInput.value = '';
 	        feedback = 'Step ' + steps + ' Added.'
-	        console.log(htmlObj)
 		}
 
 	    buttons.filter(b => b.id === 'EditStep')[0].click = function() {
@@ -334,7 +327,7 @@
         positionInputs();
         window.onresize = () => positionInputs();
 	    boolSettings.splice(7, 0, 'Solve Path Tool');
-	    defaultSettings.splice(7, 0, true);
+	    defaultSettings.splice(7, 0, false);
 
         let prevCreateOtherButtons = createOtherButtons;
         createOtherButtons = function() {
