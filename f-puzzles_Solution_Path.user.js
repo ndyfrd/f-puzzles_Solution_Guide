@@ -92,7 +92,7 @@
 	              <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	              <style> *{ margin: 0; box-sizing: border-box; } </style>
 	            </head>
-	            <title> ` + customTitle.toUpperCase() + `by` + author + `</title>
+	            <title> ` + customTitle.toUpperCase() + ` by ` + author + `</title>
 	            <body style="background-color: #01415d;">
 	            <header style="display: flex; 
 	                           justify-content: space-around; 
@@ -356,7 +356,7 @@
 
 		const prevOnKeyDown = document.onkeydown;
 		document.onkeydown = function(event) {
-			if (mode === 'Solving' && document.activeElement.id === '') {
+			if ((mode === 'Solving' && document.activeElement.id === '') || mode === 'Setting') {
 				prevOnKeyDown(event);
 				return;
 			}
