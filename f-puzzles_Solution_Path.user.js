@@ -107,7 +107,7 @@
                       + customTitle.toUpperCase() + 
                    `</span>
                     <br>
-                    <span style="font-size: 36px; color: #fff;>by ` + author + `</span>
+                    <span style="font-size: 36px; color: #fff";>by ` + author + `</span>
                   </p>
 	              <p style="display: inherit; 
 	                        align-items: flex-end; 
