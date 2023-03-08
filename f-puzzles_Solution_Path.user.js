@@ -28,16 +28,16 @@
 	    const btnsB = btnsT + buttonSH + buttonGap; 
 	    const stepBtnW = buttonW/2.1; 
 
-	    let btns = { 'AddStep':     { x: btnLX, 
+	    let btns = { 'Add+Confirm':     { x: btnLX, 
 	                                  y: btnsT, 
 	                                  title: 'Add Step' },
                     'EditStep':     { x: btnRX, 
 	                                  y: btnsT, 
 	                                  title: 'Edit Step' },
-	                'ExportGuide':  { x: btnRX, 
+	                'Export+Delete':  { x: btnRX, 
 	                                  y: btnsB, 
 	                                  title: 'Export' },
-                    'PreviewGuide': { x: btnLX, 
+                    'Preview+Cancel': { x: btnLX, 
 	                                  y: btnsB, 
 	                                  title: 'Preview' }
 	    }
@@ -97,7 +97,7 @@
 	                         width: 100%; 
 	                         font-weight: normal; 
 	                         font-size: 36px; 
-	                         margin: 50px 0;">` + customTitle +  ` by ` + author + 
+	                         margin: 50px 0;">` + customTitle +  `<span style="font-size:24px"> by </span>` + author + 
 	             `</h1>`;
 
 		    for (let key in htmlObj) { 
@@ -116,21 +116,22 @@
 	        }
 
 	        html += `</body></html>`;
+		    console.log(html);
 		    return html;
 		}
 
 	    let moveBtns = function(moveTo) {
 		    if (moveTo === 'out') {
 				buttons[buttons.findIndex(b => b.id === 'EditStep')].y = -1000;
-				buttons[buttons.findIndex(b => b.id === 'AddStep')].title = 'Confirm';
-				buttons[buttons.findIndex(b => b.id === 'PreviewGuide')].title = 'Cancel';
-				buttons[buttons.findIndex(b => b.id === 'ExportGuide')].title = 'Delete';
+				buttons[buttons.findIndex(b => b.id === 'Add+Confirm')].title = 'Confirm';
+				buttons[buttons.findIndex(b => b.id === 'Preview+Cancel')].title = 'Cancel';
+				buttons[buttons.findIndex(b => b.id === 'Export+Delete')].title = 'Delete';
 			}
 		    if (moveTo === 'in') {
 				buttons[buttons.findIndex(b => b.id === 'EditStep')].y = btns['EditStep'].y;
-				buttons[buttons.findIndex(b => b.id === 'AddStep')].title = 'Add Step';
-				buttons[buttons.findIndex(b => b.id === 'PreviewGuide')].title = 'Preview';
-				buttons[buttons.findIndex(b => b.id === 'ExportGuide')].title = 'Export';
+				buttons[buttons.findIndex(b => b.id === 'Add+Confirm')].title = 'Add Step';
+				buttons[buttons.findIndex(b => b.id === 'Preview+Cancel')].title = 'Preview';
+				buttons[buttons.findIndex(b => b.id === 'Export+Delete')].title = 'Export';
 			}
 	    }
 
@@ -145,12 +146,13 @@
 	        }
 
 	        delete htmlObj[Object.keys(htmlObj).length]
+	        console.log(htmlObj);
 	        feedback = sel.value + ' Deleted.';
 	        steps--;
 	    }
 
         //Buttons
-	    buttons.filter(b => b.id === 'AddStep')[0].click = function() {
+	    buttons.filter(b => b.id === 'Add+Confirm')[0].click = function() {
 			if (!this.hovering()) return;
 
 	        if (editing) {
@@ -167,6 +169,7 @@
 	        newSection(steps);
 	        noteInput.value = '';
 	        feedback = 'Step ' + steps + ' Added.'
+	        console.log(htmlObj)
 		}
 
 	    buttons.filter(b => b.id === 'EditStep')[0].click = function() {
@@ -198,7 +201,7 @@
         }
 	}
 
-	    buttons.filter(b => b.id === 'PreviewGuide')[0].click = function() {
+	    buttons.filter(b => b.id === 'Preview+Cancel')[0].click = function() {
 			if (!this.hovering()) return;
 			if (editing) {
 			    sel.style.display = 'none';
@@ -215,7 +218,7 @@
 			URL.revokeObjectURL(link.href);
 		}
 
-	    buttons.filter(b => b.id === 'ExportGuide')[0].click = function() {
+	    buttons.filter(b => b.id === 'Export+Delete')[0].click = function() {
 			if (!this.hovering()) return;
 
             if (editing) {
@@ -223,7 +226,7 @@
 			        sel.style.display = 'none';
 			        deleteStep(sel.value[sel.value.length - 1]);
 	                moveBtns('in');
-			        getStep(steps);
+			        if (steps > 0) getStep(steps);
 	                editing = false;
 	                confirmDelete = false;
 	                return;
