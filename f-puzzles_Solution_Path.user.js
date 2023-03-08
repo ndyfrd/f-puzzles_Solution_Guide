@@ -91,15 +91,27 @@
 	              <meta charset="UTF-8">
 	              <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	            </head>
-	            <title>` + customTitle + ` by ` + author + `</title>
+	            <title>`+ customTitle +` by `+ author +`</title>
 	            <body style="background-color: #bcd; color: #034;">
+	              <div style="width: 50%">
 	              <h1 style="text-align: center; 
                              margin: 50px 0;
 	                         width: 100%; 
 	                         font-weight: normal; 
-                             font-family: Arial;
-	                         "><span style="font-size: 48px;">` + customTitle +  ` </span><br><span style="font-size:24px">by</span><br><span style="font-size: 36px;">` + author + 
-	             `</span></h1>`;
+                             font-family: Arial;">
+                    <span style="font-size: 48px;">`+ customTitle +` </span>
+                    <br>
+                    <span style="font-size:24px;font-style:italic">by `+ author +`</span>
+                  </h1>
+                  </div>
+	              <div style="width: 50%">
+	              <h1 style="text-align: center; 
+                             margin: 50px 0;
+	                         width: 100%; 
+	                         font-weight: normal; 
+	                         font-size: 48px; 
+                             font-family: Arial;">Solve Guide</h1>
+                  </div>`;
 
 		    for (let key in htmlObj) { 
 		        html += 
@@ -107,12 +119,14 @@
 	                             justify-content: space-around; 
 	                             align-items: center; 
 	                             margin: 50px 0;">
-	              <div style="display: inherit; width: 50%; justify-content: space-around;">
-	                <img style="width: 75%;" src="` + htmlObj[key].img + `"/>
-	              </div>
-	              <div style="display: inherit; justify-content: space-around; width: 50%;">
-	                <pre style="width: 90%; font-family: Arial;font-size: 22px;white-space:pre-wrap;">` + htmlObj[key].desc + `</pre>
-	              </div>
+	               <div style="display: inherit; width: 50%; justify-content: space-around;">
+	                 <img style="width: 75%;" src="` + htmlObj[key].img + `"/>
+	               </div>
+	               <div style="display: inherit; justify-content: space-around; width: 50%;">
+	                 <pre style="width: 90%; font-family: Arial;font-size: 22px; white-space: pre-wrap;">` 
+	                   + htmlObj[key].desc +`
+	                 </pre>
+	               </div>
 	            </section>`;
 	        }
 
@@ -178,29 +192,20 @@
 
 			if (steps > 0) {
 			    editing = true;
-			    const sel = document.getElementById('stepSelect')
 			    sel.style.display = 'block';
 			    sel.innerHTML = '';
 
-                for (let a = 0; a <= steps; a++) {
+                for (let a = 1; a <= steps; a++) {
 			        let opt = document.createElement('option');
-			        if (a == 0) {
-			            opt.selected = true;
-			            opt.disabled = true;
-			            opt.hidden = true;
-			            opt.value = '';
-			            opt.innerHTML = 'Step #';
-			            sel.append(opt);
-			        } else {
 			            opt.value = 'Step ' + a;
 			            opt.innerHTML ='Step ' +  a;
 			            sel.append(opt);
-			        }
                 }
 
-            moveBtns('out');
-        }
-	}
+			    sel.selectedIndex = -1;
+                moveBtns('out');
+            }
+	    }
 
 	    buttons.filter(b => b.id === 'Preview+Cancel')[0].click = function() {
 			if (!this.hovering()) return;
@@ -265,7 +270,6 @@
 		document.body.appendChild(sel);
 		sel.onchange = () => getStep(sel.value[sel.value.length - 1]);
 
-
         let noteInputAttr = {
                               'id': 'noteInput', 
                               'placeholder': 'Solve step description',
@@ -274,6 +278,8 @@
                               'style': 'border: 4px solid black;' +
                                        'font-size: 16px;' +
                                        'outline: none;' +
+							           'resize: none;' +
+							           'overflow: auto;' +
                                        'position: fixed;' +
                                        'display: none;'
                              }
