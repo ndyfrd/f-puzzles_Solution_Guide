@@ -97,10 +97,12 @@
 	            <header style="display: flex; 
 	                           justify-content: space-around; 
 	                           background-color: #01415d;
-	                           margin: 10px; 
-	                           padding: 30px; 
+	                           margin: 20px 15px; 
 	                           border: 5px solid #fff;">
-	                <p style="text-align: left; width: 50%; font-family: Arial;">
+	                <p style="text-align: left; 
+	                   width: 50%; 
+	                   font-family: Arial; 
+	                   padding: 10px 0 65px 10px;">
                       <span style="font-size: 48px; 
                                    font-weight: bold; 
                                    color: #f5ea14">` + customTitle.toUpperCase() + 
@@ -114,6 +116,7 @@
 	                <p style="display: inherit; 
 	                          align-items: flex-end; 
 	                          flex-direction: row-reverse; 
+	                          padding: 0 15px 15px 0; 
 	                          width: 50%; 
 	                          color: #fff; 
 	                          font-weight: normal; 
@@ -133,7 +136,7 @@
 	                             padding: 20px;
 	                             margin: 30px;">
 	               <div style="display: inherit; width: 50%; justify-content: space-around;">
-	                 <img style="width: 90%;" src=` + htmlObj[key].img + `"/>
+	                 <img style="width: 90%;" src="` + htmlObj[key].img + `"/>
 	               </div>
 	               <div style="display: inherit; 
 	                           justify-content: space-around; 
